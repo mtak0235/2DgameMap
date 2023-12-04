@@ -1,11 +1,14 @@
 import pygame as pg
 from const import TILESIZE
+from os import path
+imagefolder = path.join(path.dirname(__file__), 'img')
+
 class Item(pg.sprite.Sprite):
     def __init__(self, col, row):
         pg.sprite.Sprite.__init__(self)
-        self.user_image_normal = pg.image.load("item.jpg")
+        self.user_image_normal = pg.image.load(path.join(imagefolder,"item.jpg"))
         self.user_image_normal = pg.transform.scale(self.user_image_normal, (TILESIZE, TILESIZE))
-        self.user_image_hit = pg.image.load("item.jpg")
+        self.user_image_hit = pg.image.load(path.join(imagefolder,"item.jpg"))
         self.user_image_hit = pg.transform.scale(self.user_image_hit, (TILESIZE, TILESIZE))
         self.image = self.user_image_normal
         self.grid_x = col * TILESIZE

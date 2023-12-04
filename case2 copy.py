@@ -1,7 +1,7 @@
 import sys
 import pygame as pg
 from pygame.locals import *
-from player import Player
+from player2 import Player
 from item import Item
 from wall import Wall
 from field import Field
@@ -79,18 +79,18 @@ while True:
         if keys:
             if e.type == pg.KEYDOWN:
                 if keys[pg.K_RIGHT]:
-                    player.user_speed = 0
-                    player.user_rotation_speed = -5
+                    player.speed = 0
+                    player.rotation_speed = -5
                 elif keys[pg.K_LEFT]:
-                    player.user_speed = 0
-                    player.user_rotation_speed = 5
+                    player.speed = 0
+                    player.rotation_speed = 5
                 elif keys[pg.K_UP]:
-                    player.user_speed = deltat * 0.1
+                    player.speed = deltat * 0.1
                 elif keys[pg.K_DOWN]:
-                    player.user_speed = deltat * -0.1
+                    player.speed = deltat * -0.1
             elif e.type == pg.KEYUP:
-                player.user_speed = 0
-                player.user_rotation_speed = 0
+                player.speed = 0
+                player.rotation_speed = 0
         
         # if pg.sprite.spritecollide(player, item_group, True):
         #     player.image = levimg[lev]
@@ -100,9 +100,9 @@ while True:
         #     player_group.update()
 
         if pg.sprite.spritecollide(player, map_group, False):
-            player.user_speed *= -1
+            player.speed *= -1
             player_group.update()
-            player.user_speed = 0
+            player.speed = 0
 
 
     player_group.update()
